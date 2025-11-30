@@ -24,3 +24,4 @@ Raspberry Pi Setup:
     a.	sudo chmod +x /home/ri/stepmom_tv/setup.sh
   6. Run Setup
     a.	sudo ./setup.sh
+  7. Sudo raspi-config a. Navigate to display settings, choose composite
