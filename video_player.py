@@ -42,6 +42,9 @@ def play_video(video_path):
     try:
         print(f"Playing: {video_path}")
 
+        # Set up environment variables for VLC
+        env = os.environ.copy()
+        
         # Create runtime directory if it doesn't exist
         runtime_dir = f"/run/user/{os.getuid()}"
         if not os.path.exists(runtime_dir):
