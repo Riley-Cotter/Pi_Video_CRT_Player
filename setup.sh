@@ -6,7 +6,6 @@ sudo apt install -y python3-pip
 sudo apt-get install -y vlc
 sudo sed -i 's/geteuid/getppid/' /usr/bin/vlc
 sudo apt-get install -y fbi
-sudo apt install -y python3-paho-mqtt
 sudo apt install -y python3-vlc
 
 #Set shell scripts code to executable
