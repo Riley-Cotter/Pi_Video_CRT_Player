@@ -18,9 +18,9 @@ echo -e "Start Background Image" >> "$LOG_FILE"
 /home/ri/Pi_Video_CRT_Player/pull_repo.sh >> "$LOG_FILE" 2>&1 
 
 # Start video player
-#/bin/sleep 15
-#echo -e "Start Video Player" >> "$LOG_FILE"
-#/usr/bin/python3 /home/ri/Pi_Video_CRT_Player/video_player.py >> "$LOG_FILE" 2>&1 &
+/bin/sleep 5
+echo -e "Start Video Player" >> "$LOG_FILE"
+/usr/bin/python3 /home/ri/Pi_Video_CRT_Player/video_player.py >> "$LOG_FILE" 2>&1 &
 
 # Optional: keep script alive to prevent service from exiting (if needed)
 wait
