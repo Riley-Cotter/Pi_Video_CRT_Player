@@ -16,10 +16,7 @@ Raspberry Pi Setup:
         i. git clone https://github.com/Riley-Cotter/Pi_Video_CRT_Player.git
   4. Add Program to Startup
     a.	sudo crontab -e
-    b.	For Client
-      i.	@reboot /bin/sleep 1; /home/ri/stepmom_tv/startup_client.sh > /home/ri/mycronlog.txt 2>&1
-    c.	For Brain
-      i.	@reboot /bin/sleep 1; /home/ri/stepmom_tv/startup_brain.sh  > /home/ri/mycronlog.txt 2>&1
+      i.	@reboot /bin/sleep 1; /home/ri/stepmom_tv/startup.sh > /home/ri/mycronlog.txt 2>&1
   5. Give Scripts Permission to be Executable
      a. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
   7. Run Setup
