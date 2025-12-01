@@ -45,6 +45,7 @@ def play_video(video_path):
         # VLC command with fullscreen and quit after playback
         subprocess.run([
             'vlc',
+            '--intf dummy',
             '--play-and-exit',
             '--fullscreen',
             '--no-video-title-show',
