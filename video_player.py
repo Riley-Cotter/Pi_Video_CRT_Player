@@ -5,8 +5,8 @@ import time
 VIDEO_DIR = "/media/usb"
 VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 
-# create VLC instance with no video window decorations / fullscreen (if supported)
-instance = vlc.Instance("--fullscreen", "--no-video-deco", "--no-embedded-video")
+# VLC instance for framebuffer (no X)
+instance = vlc.Instance("--fullscreen", "--no-video-deco", "--vout=drm")  # or mmal
 
 while True:
     files = sorted([
@@ -16,16 +16,12 @@ while True:
     ])
 
     for video in files:
-        print("Playing:", video)
         player = instance.media_player_new()
         media = instance.media_new(video)
         player.set_media(media)
         player.play()
-        # wait until video finishes
-        # approximate method: poll for state
         while True:
             state = player.get_state()
-            # Ended = 6, Error = 3, Stopped = 5
             if state in (vlc.State.Ended, vlc.State.Error, vlc.State.Stopped):
                 break
             time.sleep(0.5)
