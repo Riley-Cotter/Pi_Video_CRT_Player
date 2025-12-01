@@ -1,97 +1,32 @@
-#!/usr/bin/env python3
-"""
-Video Looper for Raspberry Pi
-Plays all videos from /media/usb in a continuous loop using VLC
-"""
-
 import os
-import subprocess
+import vlc
 import time
-from pathlib import Path
 
-# Configuration
 VIDEO_DIR = "/media/usb"
-VIDEO_EXTENSIONS = {'.mp4', '.avi', '.mkv', '.mov', '.flv', '.wmv', '.m4v', '.mpg', '.mpeg'}
+VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 
-def find_videos(directory):
-    """
-    Recursively find all video files in the specified directory
-    Returns a sorted list of video file paths
-    """
-    videos = []
-    
-    try:
-        for root, dirs, files in os.walk(directory):
-            for file in files:
-                if Path(file).suffix.lower() in VIDEO_EXTENSIONS:
-                    full_path = os.path.join(root, file)
-                    videos.append(full_path)
-    except Exception as e:
-        print(f"Error scanning directory: {e}")
-        return []
-    
-    # Sort alphabetically for consistent playback order
-    videos.sort()
-    return videos
+# create VLC instance with no video window decorations / fullscreen (if supported)
+instance = vlc.Instance("--fullscreen", "--no-video-deco", "--no-embedded-video")
 
-def play_video(video_path):
-    """
-    Play a single video using VLC in fullscreen mode
-    Returns True if video played successfully, False otherwise
-    """
-    try:
-        print(f"Playing: {video_path}")
-        
-        # VLC command with fullscreen and quit after playback
-        subprocess.run([
-            'cvlc',
-            '--play-and-exit',
-            video_path
-        ], check=True)
-        
-        return True
-        
-    except subprocess.CalledProcessError as e:
-        print(f"Error playing video: {e}")
-        return False
+while True:
+    files = sorted([
+        os.path.join(VIDEO_DIR, f)
+        for f in os.listdir(VIDEO_DIR)
+        if f.lower().endswith(VIDEO_EXT)
+    ])
 
-def main():
-    """
-    Main loop: index videos and play them continuously
-    """
-    print("Video Looper Starting...")
-    print(f"Scanning directory: {VIDEO_DIR}")
-    
-    # Check if directory exists
-    if not os.path.exists(VIDEO_DIR):
-        print(f"Error: Directory {VIDEO_DIR} does not exist!")
-        return
-    
-    while True:
-        # Index videos (re-scan each loop in case USB content changes)
-        videos = find_videos(VIDEO_DIR)
-        
-        if not videos:
-            print(f"No videos found in {VIDEO_DIR}")
-            print("Waiting 10 seconds before retrying...")
-            time.sleep(10)
-            continue
-        
-        print(f"Found {len(videos)} video(s)")
-        print("-" * 50)
-        
-        # Play each video
-        for video in videos:
-            play_video(video)
-            time.sleep(1)  # Brief pause between videos
-        
-        print("\nCompleted playlist. Restarting loop...")
-        print("-" * 50)
-
-if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print("\n\nVideo looper stopped by user")
-    except Exception as e:
-        print(f"\nUnexpected error: {e}")
+    for video in files:
+        print("Playing:", video)
+        player = instance.media_player_new()
+        media = instance.media_new(video)
+        player.set_media(media)
+        player.play()
+        # wait until video finishes
+        # approximate method: poll for state
+        while True:
+            state = player.get_state()
+            # Ended = 6, Error = 3, Stopped = 5
+            if state in (vlc.State.Ended, vlc.State.Error, vlc.State.Stopped):
+                break
+            time.sleep(0.5)
+        time.sleep(1)
