@@ -44,7 +44,7 @@ def play_video(video_path):
         
         # VLC command with fullscreen and quit after playback
         subprocess.run([
-            'vlc',
+            'cvlc',
             '--fullscreen',
             '--play-and-exit',
             '--no-video-title-show',  # Don't show filename on screen
@@ -55,9 +55,6 @@ def play_video(video_path):
         
     except subprocess.CalledProcessError as e:
         print(f"Error playing video: {e}")
-        return False
-    except FileNotFoundError:
-        print("VLC not found. Please install it: sudo apt-get install vlc")
         return False
 
 def main():
