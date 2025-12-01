@@ -21,7 +21,8 @@ Raspberry Pi Setup:
     c.	For Brain
       i.	@reboot /bin/sleep 1; /home/ri/stepmom_tv/startup_brain.sh  > /home/ri/mycronlog.txt 2>&1
   5. Give Scripts Permission to be Executable
-    a.	sudo chmod +x /home/ri/stepmom_tv/setup.sh
-  6. Run Setup
-    a.	sudo ./setup.sh
-  7. Sudo raspi-config a. Navigate to display settings, choose composite
+     a. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
+  7. Run Setup
+     a.sudo ./setup.sh
+  8. Sudo raspi-config a.
+     a. Navigate to display settings, choose composite
