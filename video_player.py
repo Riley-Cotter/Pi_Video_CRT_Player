@@ -44,10 +44,16 @@ def play_video(video_path):
         
         # VLC command with fullscreen and quit after playback
         subprocess.run([
-            'cvlc',
+            'cvlc',  # Console VLC (no GUI)
             '--fullscreen',
             '--play-and-exit',
-            '--no-video-title-show',  # Don't show filename on screen
+            '--no-video-title-show',
+            '--no-osd',  # Disable on-screen display
+            '--quiet',  # Reduce console output
+            '--no-audio-display',  # Don't show audio info
+            '--vout=drm',  # Direct rendering for Pi (use framebuffer)
+            '--aout=alsa',  # Use ALSA for audio instead of PulseAudio
+     
             video_path
         ], check=True)
         
