@@ -13,13 +13,13 @@ Raspberry Pi Setup:
     a. Install Git
         i. sudo apt install git
     b. Clone Repo
-        i. git clone https://github.com/Riley-Cotter/Pi_Video_CRT_Player.git
-  4. Add Program to Startup
-    a.	sudo crontab -e
-      i.	@reboot /bin/sleep 1; /home/ri/stepmom_tv/startup.sh > /home/ri/mycronlog.txt 2>&1
-  5. Give Scripts Permission to be Executable
-     a. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
+       git clone https://github.com/Riley-Cotter/Pi_Video_CRT_Player.git
+  5. Add Program to Startup
+    5. sudo crontab -e
+     @reboot /bin/sleep 1; /home/ri/stepmom_tv/startup.sh > /home/ri/mycronlog.txt 2>&1
+  6. Give Scripts Permission to be Executable
+    6. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
   7. Run Setup
-     a.sudo ./setup.sh
-  8. Sudo raspi-config a.
-     a. Navigate to display settings, choose composite
+    8. sudo ./setup.sh
+  9. Sudo raspi-config
+    10. Navigate to display settings, choose composite
