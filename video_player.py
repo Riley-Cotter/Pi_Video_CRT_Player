@@ -41,34 +41,13 @@ def play_video(video_path):
     """
     try:
         print(f"Playing: {video_path}")
-
-        # Set up environment variables for VLC
-        env = os.environ.copy()
-        
-        # Create runtime directory if it doesn't exist
-        runtime_dir = f"/run/user/{os.getuid()}"
-        if not os.path.exists(runtime_dir):
-            try:
-                os.makedirs(runtime_dir, mode=0o700, exist_ok=True)
-            except:
-                runtime_dir = "/tmp"
-        
-        env['XDG_RUNTIME_DIR'] = runtime_dir
-        env['HOME'] = os.path.expanduser('~')
         
         # VLC command with fullscreen and quit after playback
         subprocess.run([
             'cvlc',
-            '--fullscreen',
             '--play-and-exit',
-            '--no-video-title-show',
-            '--no-osd',
-            '--vout=fb',
-            '--fbdev=/dev/fb0',
             '--aout=alsa',
-            '--no-xlib',
-            '--no-dbus',
-     
+            
             video_path
         ], check=True)
         
