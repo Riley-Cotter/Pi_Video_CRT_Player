@@ -49,7 +49,6 @@ def play_video(video_path):
             '--play-and-exit',
             '--no-video-title-show',
             '--no-osd',  # Disable on-screen display
-            '--quiet',  # Reduce console output
             '--vout=drm',  # Direct rendering for Pi (use framebuffer)
             '--aout=alsa',  # Use ALSA for audio instead of PulseAudio
      
