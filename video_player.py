@@ -49,7 +49,7 @@ def play_video(video_path):
             '--fullscreen',
             '--no-video-title-show',
             '--aout=alsa',
-            '--vout=gles2',
+            '--vout=drm_vout",
             video_path
         ], check=True)
         
