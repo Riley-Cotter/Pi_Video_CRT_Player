@@ -47,9 +47,10 @@ def play_video(video_path):
             'cvlc',  # Console VLC (no GUI)
             '--fullscreen',
             '--play-and-exit',
+            '--video-on-top',
             '--no-video-title-show',
             '--no-osd',  # Disable on-screen display
-            '--vout=drm',  # Direct rendering for Pi (use framebuffer)
+            '--vout=fb',
             '--aout=alsa',  # Use ALSA for audio instead of PulseAudio
      
             video_path
