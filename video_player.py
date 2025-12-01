@@ -46,8 +46,10 @@ def play_video(video_path):
         subprocess.run([
             'cvlc',
             '--play-and-exit',
+            '--fullscreen',
+            '--no-video-title-show',
             '--aout=alsa',
-            
+            '--vout=mmal',   # << ADD THIS
             video_path
         ], check=True)
         
