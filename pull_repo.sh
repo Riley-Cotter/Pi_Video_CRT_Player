@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO_DIR="/home/ri/stepmom_tv"
+REPO_DIR="/home/ri/Pi_Video_CRT_Player"
 LOG_FILE="/home/ri/mycronlog.txt"
 
 # Function to check internet connectivity by pinging Google DNS
