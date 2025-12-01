@@ -49,7 +49,6 @@ def play_video(video_path):
             '--fullscreen',
             '--no-video-title-show',
             '--aout=alsa',
-            "--vout", "fb",
             video_path
         ], check=True)
         
