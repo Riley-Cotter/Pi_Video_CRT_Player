@@ -17,7 +17,7 @@ while True:
 
     for video in files:
         player = instance.media_player_new()
-        media = instance.media_new(video)
+        media = instance.media_new(video,f'start-time={360}')
         player.set_media(media)
 
         # Set the aspect ratio (e.g., "16:9" for widescreen)
