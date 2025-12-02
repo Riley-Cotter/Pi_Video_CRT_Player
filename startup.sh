@@ -14,7 +14,7 @@ echo -e "Start Background Image" >> "$LOG_FILE"
 
 # Pull latest repo update
 /bin/sleep 3
-#echo -e "Pull Repo" >> "$LOG_FILE"
+echo -e "Pull Repo" >> "$LOG_FILE"
 /home/ri/Pi_Video_CRT_Player/pull_repo.sh >> "$LOG_FILE" 2>&1 
 
 # Start video player
