@@ -4,7 +4,7 @@ Plays videos from a pi on a CRT TV
 1.	For Windows
   a.	Download Ubuntu (Windows Subsystem for Linux)
 Raspberry Pi Setup:
-  1. Install Lite OS (using the raspberry pi imager) Warning* 32 bit!
+  1. Install BUSTER Lite OS (using the raspberry pi imager) Warning* 32 bit!
     
   2. Include WIFI 
         1.	Username: LocalWIFIUsername
