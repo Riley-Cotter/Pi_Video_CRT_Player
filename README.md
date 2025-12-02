@@ -22,5 +22,5 @@ Raspberry Pi Setup:
     6. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
   8. Run Setup
     8. sudo ./Pi_Video_CRT_Player/setup.sh
-  9. Sudo raspi-config
+  9. sudo raspi-config
     10. Navigate to display settings, choose composite
