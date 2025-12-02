@@ -25,6 +25,8 @@ while True:
         
         player.play()
         while True:
+            time.sleep(30)
+            player.stop()
             state = player.get_state()
             if state in (vlc.State.Ended, vlc.State.Error, vlc.State.Stopped):
                 break
