@@ -20,8 +20,8 @@ while True:
         media = instance.media_new(video)
         player.set_media(media)
 
-        # Enable fullscreen mode
-        player.set_fullscreen(True)
+        # Set the aspect ratio (e.g., "16:9" for widescreen)
+        player.video_set_aspect_ratio("4:3")
         
         player.play()
         while True:
