@@ -6,7 +6,7 @@ VIDEO_DIR = "/media/usb"
 VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 
 # VLC instance for framebuffer (no X)
-instance = vlc.Instance("--fullscreen")  # or mmal
+instance = vlc.Instance()
 
 while True:
     files = sorted([
