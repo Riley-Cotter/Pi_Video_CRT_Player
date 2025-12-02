@@ -21,7 +21,7 @@ while True:
         player.set_media(media)
 
         # Set the aspect ratio (e.g., "16:9" for widescreen)
-        player.video_set_aspect_ratio("4:3")
+        player.video_set_aspect_ratio("16:9")
         
         player.play()
         while True:
