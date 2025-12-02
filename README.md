@@ -21,6 +21,6 @@ Raspberry Pi Setup:
   7. Give Scripts Permission to be Executable
     6. sudo chmod +x /home/ri/Pi_Video_CRT_Player/setup.sh
   8. Run Setup
-    8. sudo ./setup.sh
+    8. sudo ./Pi_Video_CRT_Player/setup.sh
   9. Sudo raspi-config
     10. Navigate to display settings, choose composite
