@@ -8,9 +8,6 @@ VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 # VLC instance for framebuffer (no X)
 instance = vlc.Instance()
 
-# Enable fullscreen mode
-player.set_fullscreen(True)
-
 while True:
     files = sorted([
         os.path.join(VIDEO_DIR, f)
@@ -22,6 +19,10 @@ while True:
         player = instance.media_player_new()
         media = instance.media_new(video)
         player.set_media(media)
+
+        # Enable fullscreen mode
+        player.set_fullscreen(True)
+        
         player.play()
         while True:
             state = player.get_state()
