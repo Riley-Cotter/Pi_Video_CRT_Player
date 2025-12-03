@@ -17,7 +17,7 @@ while True:
 
     for video in files:
         player = instance.media_player_new()
-        media = instance.media_new(video,f'start-time={0}')
+        media = instance.media_new(video)
         player.set_media(media)
 
         # Set the aspect ratio (e.g., "16:9" for widescreen)
@@ -25,8 +25,6 @@ while True:
         
         player.play()
         while True:
-            #time.sleep(30)
-            #player.stop()
             state = player.get_state()
             if state in (vlc.State.Ended, vlc.State.Error, vlc.State.Stopped):
                 break
