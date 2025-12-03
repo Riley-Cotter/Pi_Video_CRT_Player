@@ -38,7 +38,7 @@ if __name__ == "__main__":
 
     # Prefer fbi if framebuffer exists
     if os.path.exists("/dev/fb0"):
-        cmd = ["sudo", "fbi", "-T", "2", "-a", "--noverbose"] + jpg_files
+        cmd = ["sudo", "fbi", "-T", "2", "-a", "--noverbose", "-noreset"] + jpg_files
         viewer = "fbi"
     else:
         cmd = ["feh", "-F", "-Z"] + jpg_files
