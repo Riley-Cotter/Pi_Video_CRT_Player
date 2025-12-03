@@ -7,15 +7,15 @@ echo -e "\n== Startup initiated: $(date) ==" > "$LOG_FILE"
 echo -e "Start USB MOUNT" >> "$LOG_FILE"
 /home/ri/Pi_Video_CRT_Player/mount_usb.sh >> "$LOG_FILE" 2>&1 &
 
-# Start background image script
-/bin/sleep 3
-echo -e "Start Background Image" >> "$LOG_FILE"
-/usr/bin/python3 /home/ri/Pi_Video_CRT_Player/background_image.py >> "$LOG_FILE" 2>&1 &
-
 # Pull latest repo update
-/bin/sleep 3
+/bin/sleep 5
 echo -e "Pull Repo" >> "$LOG_FILE"
 /home/ri/Pi_Video_CRT_Player/pull_repo.sh >> "$LOG_FILE" 2>&1 
+
+# Start background image script
+/bin/sleep 10
+echo -e "Start Background Image" >> "$LOG_FILE"
+/usr/bin/python3 /home/ri/Pi_Video_CRT_Player/background_image.py >> "$LOG_FILE" 2>&1 &
 
 # Start video player
 /bin/sleep 5
