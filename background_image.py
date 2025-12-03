@@ -2,6 +2,7 @@ import glob
 import subprocess
 import logging
 import time
+import os
 
 # Setup logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -28,22 +29,25 @@ def wait_for_usb_mount(mount_path="/media/usb", timeout=30):
 
         time.sleep(1)
 
+
 if __name__ == "__main__":
     if not wait_for_usb_mount():
         logging.error("USB mount failed, aborting image display.")
     else:
         jpg_files = glob.glob("/media/usb/*.jpg")
+
         if jpg_files:
             try:
-                subprocess.run(
-                    "sudo fbi -T 2 -a --noverbose /media/usb/*.jpg",
-                    shell=True,
-                    check=True,
-                    text=True,
-                    capture_output=True
-                )
-                logging.info("Displayed default image(s).")
+                # Build fbi command properly
+                cmd = ["sudo", "fbi", "-T", "2", "-a", "--noverbose"] + jpg_files
+
+                subprocess.run(cmd, check=True)
+                logging.info("Displayed image(s) successfully.")
+
             except subprocess.CalledProcessError as e:
-                logging.error(f"Failed to display image: {e.stderr}")
+                logging.error(f"Failed to display image(s). Return code: {e.returncode}")
+            except Exception as e:
+                logging.error(f"Unexpected error running fbi: {e}")
+
         else:
             logging.warning("No JPG images found in /media/usb/. Skipping image display.")
