@@ -13,8 +13,6 @@ while True:
         for f in os.listdir(VIDEO_DIR)
         if f.lower().endswith(VIDEO_EXT)
     ])
-
-    random.shuffle(files)  # 🔀 shuffle playlist
     
     for video in files:
         print(f"Playing: {video}")
