@@ -5,7 +5,7 @@ import time
 VIDEO_DIR = "/media/usb"
 VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 
-instance = vlc.Instance("--aout=alsa", "--video-filter=transform", "--transform-type=90")
+instance = vlc.Instance("--aout=alsa", "--video-filter=transform", "--transform-type=270")
 
 while True:
     files = sorted([
