@@ -5,7 +5,7 @@ import time
 VIDEO_DIR = "/media/usb"
 VIDEO_EXT = (".mp4", ".mkv", ".avi", ".mov")
 
-instance = vlc.Instance("--aout=alsa", "--video-filter=transform", "--transform-type=270")
+instance = vlc.Instance("--aout=alsa")
 
 while True:
     files = sorted([
@@ -21,7 +21,7 @@ while True:
         media = instance.media_new(video)
         player.set_media(media)
 
-        #player.video_set_aspect_ratio("3:4")
+        player.video_set_aspect_ratio("3:4")
         player.play()
 
         # --- WAIT UNTIL PLAYBACK ACTUALLY STARTS ---
