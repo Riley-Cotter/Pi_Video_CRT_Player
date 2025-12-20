@@ -19,7 +19,7 @@ Raspberry Pi Setup:
     
 3. ssh into your RaspberryPi and Clone Repository
   
-		sudo apt install git
+		sudo apt install git -Y
   	then
 	
 		git clone https://github.com/Riley-Cotter/Pi_Video_CRT_Player.git
